@@ -759,4 +759,37 @@ entries:
     urls:
     - assets/neuvector-crd/neuvector-crd-2.6.6.tgz
     version: 2.6.6
+  sriov-crd:
+  - apiVersion: v2
+    created: "2024-03-19T10:14:52.773464983+01:00"
+    description: Installs the CRDs for the sriov operator
+    digest: 420962049d2cb6511930c4e4e8ce461ae685d577394a2c216b681fe68e17c2e5
+    name: sriov-crd
+    type: application
+    urls:
+    - assets/sriov-crd/sriov-crd-1.1.0+up0.1.0.tgz
+    version: 1.1.0+up0.1.0
+  sriov-network-operator:
+  - apiVersion: v2
+    appVersion: 1.1.0
+    created: "2024-03-19T10:14:52.778506336+01:00"
+    dependencies:
+    - condition: sriov-nfd.enabled
+      name: sriov-nfd
+      repository: file://./charts/sriov-nfd
+      version: 0.14.1
+    description: SR-IOV network operator configures and manages SR-IOV networks in
+      the kubernetes cluster
+    digest: f12f27678574ce176e22f8b4b2fdd551b5c7f7acaa1fb5488bd86c0bd71e5d18
+    home: https://github.com/k8snetworkplumbingwg/sriov-network-operator
+    keywords:
+    - sriov
+    kubeVersion: '>= 1.16.0'
+    name: sriov-network-operator
+    sources:
+    - https://github.com/k8snetworkplumbingwg/sriov-network-operator
+    type: application
+    urls:
+    - assets/sriov-network-operator/sriov-network-operator-1.1.0+up0.1.0.tgz
+    version: 1.1.0+up0.1.0
 generated: "2023-10-17T12:11:15.900212+03:00"
