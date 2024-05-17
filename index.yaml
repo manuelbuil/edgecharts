@@ -895,6 +895,20 @@ entries:
     - assets/neuvector-crd/neuvector-crd-2.6.6.tgz
     version: 2.6.6
   sriov-crd:
+  - annotations:
+      catalog.cattle.io/experimental: "true"
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/permits-os: linux
+      catalog.cattle.io/release-name: sriov-crd
+    apiVersion: v2
+    created: "2024-05-17T15:10:27.074592379+02:00"
+    description: Installs the CRDs for the SR-IOV operator
+    digest: 59ef30d38e286ec71cde8be891d98090654bc2cb32482e8c6515e809e45884ee
+    name: sriov-crd
+    type: application
+    urls:
+    - assets/sriov-crd/sriov-crd-1.2.9+up0.1.0.tgz
+    version: 1.2.9+up0.1.0
   - apiVersion: v2
     created: "2024-04-10T17:55:59.529653387-06:00"
     description: Installs the CRDs for the SR-IOV operator
@@ -932,6 +946,35 @@ entries:
     - assets/sriov-crd/sriov-crd-1.1.0+up0.1.0.tgz
     version: 1.1.0+up0.1.0
   sriov-network-operator:
+  - annotations:
+      catalog.cattle.io/auto-install: sriov-crd=match
+      catalog.cattle.io/experimental: "true"
+      catalog.cattle.io/namespace: cattle-sriov-system
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/permits-os: linux
+      catalog.cattle.io/upstream-version: 1.2.0
+    apiVersion: v2
+    appVersion: 1.2.0
+    created: "2024-05-17T15:20:11.757175238+02:00"
+    dependencies:
+    - condition: sriov-nfd.enabled
+      name: sriov-nfd
+      repository: file://./charts/sriov-nfd
+      version: 0.15.4
+    description: SR-IOV network operator configures and manages SR-IOV networks in
+      the kubernetes cluster
+    digest: 04ab0ff59638d24522085a2a4117ae49c897a11d57d8279af8f0825968090ec4
+    home: https://github.com/k8snetworkplumbingwg/sriov-network-operator
+    keywords:
+    - sriov
+    kubeVersion: '>= 1.16.0-0'
+    name: sriov-network-operator
+    sources:
+    - https://github.com/k8snetworkplumbingwg/sriov-network-operator
+    type: application
+    urls:
+    - assets/sriov-network-operator/sriov-network-operator-1.2.9+up0.1.0.tgz
+    version: 1.2.9+up0.1.0
   - apiVersion: v2
     appVersion: 1.2.0
     created: "2024-04-25T21:19:07.317955637-06:00"
